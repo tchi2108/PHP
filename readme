@@ -1,0 +1,23 @@
+Nhiem vu: luu thong tin cua mot xe oto vao DB
+class Car {
+    public $license_plate;
+    public $color;
+    public $engine_status; 
+
+}   vi du mau ve class Car gom 3 thuoc tinh 
+
+ public function __construct($license_plate=null, $color=null, $engine_status=null)
+    {
+        $this->license_plate = $license_plate;
+        $this->color = $color;
+        $this->engine_status = $engine_status;
+
+    }
+day la ham khoi tao
+  public function AddUser() : day la phuong thuc method, nhiem vu cua no la them ng dung vao co so du lieu, ham nay khong chua static nen buoc phai khoi tao 
+doi tuong de goi duoc no.
+ 
+De insert vao DB thi cta phai khoi tao ra mot ket noi den DB 
+ $dsn = "mysql:host=" . DatabaseInfo::getServer() . ";dbname=" . DatabaseInfo::getDatabaseName() . ";charset=utf8";
+ $conn = new PDO($dsn, DatabaseInfo::getUserName(), DatabaseInfo::getPassword());
+
