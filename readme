@@ -21,3 +21,39 @@ De insert vao DB thi cta phai khoi tao ra mot ket noi den DB
  $dsn = "mysql:host=" . DatabaseInfo::getServer() . ";dbname=" . DatabaseInfo::getDatabaseName() . ";charset=utf8";
  $conn = new PDO($dsn, DatabaseInfo::getUserName(), DatabaseInfo::getPassword());
 
+
+
+
+1. Em phải tự hỏi : Class ? Object ? Constructor ? Trông nó thế nào ?
+2. Class User
+Object là : $c = new User(null, "MrC", "12378", "staff");
+3. Hỏi tiếp : Muốn truy cập vào hàm trong class thì làm như thế nào ?
+ public function getUserId()
+ public static function getServer()
+4. Muốn viết ra một hàm insert vào DB thì phải làm như thế nào ?
+ 1. Học câu lệnh sql (Tạo Database như nào , Tạo bảng như nào , Insert như nào )
+ 2. Các câu lệnh Update,Lấy các bản ghi thì như nào ? Delete trong database như nào ?
+ 4. Các bước để PHP thực hiện thao tác với các câu lệnh trên thì như nào ?
+   - Mở kết nối như nào ?
+  Ví dụ : 
+ // Connect to database.
+        $dsn = "mysql:host=" . DatabaseInfo::getServer() . ";dbname=" . DatabaseInfo::getDatabaseName() . ";charset=utf8";
+        $conn = new PDO($dsn, DatabaseInfo::getUserName(), DatabaseInfo::getPassword());
+
+  - Câu lệnh SQL như nào ???
+   //câu lệnh insert vào bảng 
+        //insert into tablename(colum1, colum2) values() 
+
+  // Prepare statement - Chuẩn bị
+        $stmt = $conn->prepare($sql);
+
+  // Execute the statement - Thực thi sql
+        $stmt->execute(array(
+            ":userName" => $this->userName,
+            ":password" => $this->userPassword,
+            ":role" => $this->role
+        ));
+
+  // Đóng kết nối !!
+
+
